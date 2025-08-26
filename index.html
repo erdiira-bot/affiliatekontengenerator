@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GENERATOR SCRIPT KONTEN AFFILIATE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        .dark-mode .bg-white {
+            background-color: #1e1e1e;
+        }
+        .dark-mode .text-gray-900 {
+            color: #e0e0e0;
+        }
+        .dark-mode .text-gray-700 {
+            color: #b0b0b0;
+        }
+        .dark-mode .placeholder-gray-400::placeholder {
+            color: #757575;
+        }
+        .dark-mode input, .dark-mode textarea, .dark-mode select {
+            background-color: #2e2e2e;
+            color: #e0e0e0;
+            border-color: #424242;
+        }
+        .dark-mode button:hover {
+            opacity: 0.8;
+        }
+        .dark-mode .card {
+            background-color: #1e1e1e;
+            border-color: #424242;
+        }
+        /* Custom styles for loading states */
+        .loading-button {
+            background-color: #cbd5e1;
+            cursor: not-allowed;
+        }
+        .loading-button .loading-icon {
+            border-top-color: #3b82f6;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen p-4 sm:p-8">
+    <div class="max-w-4xl mx-auto py-8">
+        <header class="text-center mb-10">
+            <h1 class="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-white">GENERATOR SCRIPT KONTEN AFFILIATE</h1>
+            <p class="mt-2 text-lg text-gray-600 dark:text-gray-300">Buat script konten affiliate dalam hitungan detik.</p>
+            <p class="text-sm mt-1 text-gray-500 dark:text-gray-400">by : digital corner</p>
+        </header>
+
+        <main class="space-y-6">
+            <!-- Mode Toggle -->
+            <div class="flex justify-end mb-4">
+                <button id="themeToggle" class="px-4 py-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white transition-colors duration-300">
+                    <span id="themeText">Dark Mode</span>
+                </button>
+            </div>
+            
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-lg border border-gray-200 dark:border-gray-700">
+                <div class="space-y-4">
+                    <!-- Product Name Input -->
+                    <div>
+                        <label for="productName" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nama Produk</label>
+                        <input type="text" id="productName" placeholder="Contoh: Masker Wajah Ajaib" class="mt-1 block w-full rounded-2xl border-gray-300 dark:border-gray-600 shadow-sm p-3 focus:ring-indigo-500 focus:border-indigo-500 transition-colors duration-300 bg-gray-50 dark:bg-gray-700 placeholder-gray-400">
+                    </div>
+
+                    <!-- Product Link Input -->
+                    <div>
+                        <label for="productLink" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Link Produk</label>
+                        <input type="url" id="productLink" placeholder="Masukkan link produk dari marketplace..." class="mt-1 block w-full rounded-2xl border-gray-300 dark:border-gray-600 shadow-sm p-3 focus:ring-indigo-500 focus:border-indigo-500 transition-colors duration-300 bg-gray-50 dark:bg-gray-700 placeholder-gray-400">
+                    </div>
+
+                    <!-- Options -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
+                            <label for="languageStyle" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Gaya Bahasa</label>
+                            <select id="languageStyle" class="mt-1 block w-full rounded-2xl border-gray-300 dark:border-gray-600 shadow-sm p-3 focus:ring-indigo-500 focus:border-indigo-500 transition-colors duration-300 bg-gray-50 dark:bg-gray-700">
+                                <option value="santai">Santai & Kekinian</option>
+                                <option value="informatif">Informatif & Edukatif</option>
+                                <option value="persuasif">Persuasif & Meyakinkan</option>
+                                <option value="humor">Humor & Kocak</option>
+                                <option value="dramatis">Dramatis & Emosional</option>
+                                <option value="inspiratif">Inspiratif & Motivasi</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="scriptLength" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Panjang Tulisan</label>
+                            <select id="scriptLength" class="mt-1 block w-full rounded-2xl border-gray-300 dark:border-gray-600 shadow-sm p-3 focus:ring-indigo-500 focus:border-indigo-500 transition-colors duration-300 bg-gray-50 dark:bg-gray-700">
+                                <option value="pendek">Pendek (100-250 karakter)</option>
+                                <option value="sedang">Sedang (251-500 karakter)</option>
+                                <option value="panjang">Panjang (501-1000 karakter)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="resultCount" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Jumlah Hasil</label>
+                            <select id="resultCount" class="mt-1 block w-full rounded-2xl border-gray-300 dark:border-gray-600 shadow-sm p-3 focus:ring-indigo-500 focus:border-indigo-500 transition-colors duration-300 bg-gray-50 dark:bg-gray-700">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="mt-6 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <button id="generateBtn" class="flex-1 w-full sm:w-auto py-3 px-6 rounded-2xl text-lg font-semibold text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50 transition-colors duration-300">
+                        Buatkan Script Sekarang! ✨
+                    </button>
+                    <button id="resetBtn" class="flex-1 w-full sm:w-auto py-3 px-6 rounded-2xl text-lg font-semibold text-indigo-600 dark:text-indigo-400 bg-transparent border-2 border-indigo-600 dark:border-indigo-400 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-400 dark:hover:text-black focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50 transition-colors duration-300">
+                        Reset
+                    </button>
+                </div>
+            </div>
+
+            <!-- New Image Generation Section -->
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-lg border border-gray-200 dark:border-gray-700">
+                <h2 class="text-xl sm:text-2xl font-bold mb-4 text-gray-800 dark:text-white">Generator Gambar Produk ✨</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label for="imagePrompt" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Deskripsi Gambar Produk</label>
+                        <input type="text" id="imagePrompt" placeholder="Contoh: Masker wajah berwarna hijau dengan latar belakang daun monstera" class="mt-1 block w-full rounded-2xl border-gray-300 dark:border-gray-600 shadow-sm p-3 focus:ring-indigo-500 focus:border-indigo-500 transition-colors duration-300 bg-gray-50 dark:bg-gray-700 placeholder-gray-400">
+                    </div>
+                    <button id="generateImageBtn" class="w-full py-3 px-6 rounded-2xl text-lg font-semibold text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-500 focus:ring-opacity-50 transition-colors duration-300">
+                        Buatkan Gambar Sekarang!
+                    </button>
+                </div>
+                <div id="imageResultContainer" class="mt-6 flex justify-center items-center h-64 border border-dashed border-gray-300 dark:border-gray-600 rounded-2xl bg-gray-50 dark:bg-gray-700 text-gray-500 dark:text-gray-400">
+                    Gambar akan muncul di sini...
+                </div>
+            </div>
+
+            <!-- Loading Indicator -->
+            <div id="loadingIndicator" class="hidden text-center text-gray-500 dark:text-gray-400 mt-6">
+                <svg class="animate-spin h-8 w-8 text-indigo-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <p class="mt-2">Sedang membuatkan script untuk Anda, mohon tunggu sebentar...</p>
+            </div>
+
+            <!-- Results Container -->
+            <div id="resultsContainer" class="space-y-6 mt-6">
+                <!-- Script cards will be injected here -->
+            </div>
+
+            <!-- Message Box for Alerts -->
+            <div id="messageBox" class="fixed inset-x-0 bottom-4 w-fit mx-auto hidden p-4 rounded-xl shadow-lg text-white font-semibold transform -translate-y-full transition-transform duration-500 ease-in-out z-50">
+                <div id="messageText"></div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const generateBtn = document.getElementById('generateBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            const productNameInput = document.getElementById('productName');
+            const productLinkInput = document.getElementById('productLink');
+            const languageStyleSelect = document.getElementById('languageStyle');
+            const scriptLengthSelect = document.getElementById('scriptLength');
+            const resultCountSelect = document.getElementById('resultCount');
+            const resultsContainer = document.getElementById('resultsContainer');
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            const themeToggle = document.getElementById('themeToggle');
+            const themeText = document.getElementById('themeText');
+            const messageBox = document.getElementById('messageBox');
+            const messageText = document.getElementById('messageText');
+            
+            const imagePromptInput = document.getElementById('imagePrompt');
+            const generateImageBtn = document.getElementById('generateImageBtn');
+            const imageResultContainer = document.getElementById('imageResultContainer');
+
+            const apiKey = ""; // API key is provided by the canvas environment
+            const scriptApiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+            const imageApiUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict?key=${apiKey}`;
+            const ttsApiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
+
+            let isProcessing = false;
+            let currentAudio = null;
+            
+            // List of common CTA phrases for TikTok/Shopee
+            const ctaList = [
+                'Klik logo keranjang di kiri bawah untuk beli sekarang!',
+                'Link produknya udah aku siapin di keranjang kuning kiri bawah, yuk buruan cek!',
+                'Cek di keranjang kuning sekarang juga, jangan sampai kehabisan ya!',
+                'Beli sekarang juga sebelum kehabisan stok! Klik keranjang kuning ya!',
+                'Langsung checkout di keranjang kuning, mumpung lagi ada promo!',
+                'Link produknya ada di bio, jangan lupa cek ya!',
+                'Langsung klik link di bawah ini dan dapatkan promonya!',
+                'Buruan, stok terbatas! Checkout sekarang juga!',
+                'Jangan tunda lagi! Dapatkan produk impianmu sekarang!',
+                'Promo spesial cuma hari ini! Klik keranjang kuning sebelum terlambat!',
+                'Gak usah ragu, langsung aja klik keranjang kuning dan buktikan sendiri!',
+                'Yuk, kepoin produknya di keranjang kuning sekarang!',
+            ];
+
+            // Handle theme toggle
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                const isDarkMode = document.body.classList.contains('dark-mode');
+                themeText.textContent = isDarkMode ? 'Light Mode' : 'Dark Mode';
+            });
+
+            // Function to show a temporary message box
+            function showMessage(message, type) {
+                messageText.textContent = message;
+                messageBox.classList.remove('bg-green-600', 'bg-red-600', 'hidden', '-translate-y-full');
+                if (type === 'success') {
+                    messageBox.classList.add('bg-green-600');
+                } else {
+                    messageBox.classList.add('bg-red-600');
+                }
+                messageBox.classList.add('translate-y-0');
+                setTimeout(() => {
+                    messageBox.classList.remove('translate-y-0');
+                    messageBox.classList.add('-translate-y-full');
+                    setTimeout(() => {
+                        messageBox.classList.add('hidden');
+                    }, 500); // Wait for transition to finish before hiding
+                }, 3000);
+            }
+
+            // Function to convert Base64 to ArrayBuffer
+            function base64ToArrayBuffer(base64) {
+                const binaryString = window.atob(base64);
+                const len = binaryString.length;
+                const bytes = new Uint8Array(len);
+                for (let i = 0; i < len; i++) {
+                    bytes[i] = binaryString.charCodeAt(i);
+                }
+                return bytes.buffer;
+            }
+
+            // Function to convert PCM audio data to WAV blob
+            function pcmToWav(pcm16, sampleRate) {
+                const pcmBuffer = pcm16.buffer;
+                const dataView = new DataView(new ArrayBuffer(44 + pcmBuffer.byteLength));
+                let offset = 0;
+
+                // WAV header
+                const writeString = (str) => {
+                    for (let i = 0; i < str.length; i++) {
+                        dataView.setUint8(offset + i, str.charCodeAt(i));
+                    }
+                };
+                const writeUint32 = (val) => {
+                    dataView.setUint32(offset, val, true);
+                };
+                const writeUint16 = (val) => {
+                    dataView.setUint16(offset, val, true);
+                };
+
+                // RIFF chunk descriptor
+                writeString('RIFF'); offset += 4;
+                writeUint32(36 + pcmBuffer.byteLength); offset += 4;
+                writeString('WAVE'); offset += 4;
+
+                // fmt chunk
+                writeString('fmt '); offset += 4;
+                writeUint32(16); offset += 4; // Chunk size
+                writeUint16(1); offset += 2; // Audio format (PCM)
+                writeUint16(1); offset += 2; // Number of channels
+                writeUint32(sampleRate); offset += 4; // Sample rate
+                writeUint32(sampleRate * 2); offset += 4; // Byte rate
+                writeUint16(2); offset += 2; // Block align
+                writeUint16(16); offset += 2; // Bits per sample
+
+                // data chunk
+                writeString('data'); offset += 4;
+                writeUint32(pcmBuffer.byteLength); offset += 4;
+
+                const pcmBytes = new Uint8Array(pcmBuffer);
+                for (let i = 0; i < pcmBuffer.byteLength; i++) {
+                    dataView.setUint8(offset + i, pcmBytes[i]);
+                }
+
+                return new Blob([dataView], { type: 'audio/wav' });
+            }
+
+            // Generate script function
+            async function generateScript() {
+                if (isProcessing) return;
+
+                const productName = productNameInput.value.trim();
+                const productLink = productLinkInput.value.trim();
+                const languageStyle = languageStyleSelect.value;
+                const scriptLength = scriptLengthSelect.value;
+                const resultCount = parseInt(resultCountSelect.value);
+
+                if (!productName || !productLink) {
+                    showMessage('Nama produk dan Link produk harus diisi!', 'error');
+                    return;
+                }
+
+                isProcessing = true;
+                resultsContainer.innerHTML = '';
+                loadingIndicator.classList.remove('hidden');
+
+                const lengthMap = {
+                    'pendek': 'sekitar 100-250 karakter',
+                    'sedang': 'sekitar 251-500 karakter',
+                    'panjang': 'sekitar 501-1000 karakter'
+                };
+
+                const promptTemplate = `
+                    Buatkan ${resultCount} script konten afiliasi untuk produk bernama "${productName}" dengan gaya bahasa "${languageStyle}" dan panjang tulisan "${lengthMap[scriptLength]}".
+                    Setiap script harus memiliki bagian-bagian berikut:
+                    1. Judul/Hook/Problem: Kalimat pembuka yang menarik perhatian atau menimbulkan masalah.
+                    2. Konten/Solusi: Penjelasan singkat tentang produk sebagai solusi dari masalah.
+                    3. Fitur: Tiga fitur utama produk yang disebutkan secara singkat.
+                    4. CTA (Call to Action): Ajakan untuk mengklik link produk.
+                    Pastikan bahasa yang digunakan natural, tidak kaku seperti robot, dan gunakan tanda baca yang sesuai. Sisipkan nama produk "${productName}" di setiap script agar lebih SEO friendly.
+                    Format output harus dalam bentuk JSON.
+                    Contoh format JSON:
+                    {
+                        "scripts": [
+                            {
+                                "title": "...",
+                                "content": "...",
+                                "features": ["...", "...", "..."],
+                                "cta": "..."
+                            },
+                            {
+                                "title": "...",
+                                "content": "...",
+                                "features": ["...", "...", "..."],
+                                "cta": "..."
+                            }
+                        ]
+                    }
+                    Tolong berikan respons dalam JSON format tanpa teks penjelasan di luar objek JSON.
+                `;
+
+                const payload = {
+                    contents: [{
+                        parts: [{
+                            text: promptTemplate
+                        }]
+                    }],
+                    generationConfig: {
+                        responseMimeType: "application/json"
+                    }
+                };
+                
+                let retries = 0;
+                const maxRetries = 3;
+                let successfulResponse = false;
+                
+                while(retries < maxRetries && !successfulResponse) {
+                    try {
+                        const response = await fetch(scriptApiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        if (!response.ok) {
+                             throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+
+                        const result = await response.json();
+                        const jsonString = result.candidates[0].content.parts[0].text;
+                        const data = JSON.parse(jsonString);
+
+                        if (data && data.scripts) {
+                            renderResults(data.scripts);
+                            successfulResponse = true;
+                        } else {
+                            throw new Error("Invalid response format from API.");
+                        }
+
+                    } catch (error) {
+                        console.error('API call failed, retrying...', error);
+                        retries++;
+                        if (retries < maxRetries) {
+                            await new Promise(res => setTimeout(res, Math.pow(2, retries) * 1000));
+                        } else {
+                            showMessage('Gagal membuat script. Silakan coba lagi nanti.', 'error');
+                        }
+                    }
+                }
+                
+                loadingIndicator.classList.add('hidden');
+                isProcessing = false;
+            }
+
+            // Function to generate an image
+            async function generateImage() {
+                const imagePrompt = imagePromptInput.value.trim();
+                if (!imagePrompt) {
+                    showMessage('Deskripsi gambar produk harus diisi!', 'error');
+                    return;
+                }
+
+                imageResultContainer.innerHTML = `<div class="w-full h-full flex items-center justify-center flex-col">
+                    <svg class="animate-spin h-8 w-8 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <p class="mt-2 text-gray-500 dark:text-gray-400">Sedang membuat gambar...</p>
+                </div>`;
+                
+                const payload = { instances: { prompt: imagePrompt }, parameters: { "sampleCount": 1} };
+                
+                let retries = 0;
+                const maxRetries = 3;
+                let successfulResponse = false;
+                
+                while(retries < maxRetries && !successfulResponse) {
+                    try {
+                        const response = await fetch(imageApiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        const result = await response.json();
+                        if (result.predictions && result.predictions.length > 0 && result.predictions[0].bytesBase64Encoded) {
+                            const imageUrl = `data:image/png;base64,${result.predictions[0].bytesBase64Encoded}`;
+                            imageResultContainer.innerHTML = `<img src="${imageUrl}" alt="Generated product image" class="rounded-2xl w-full h-full object-contain">`;
+                            showMessage('Gambar berhasil dibuat!', 'success');
+                            successfulResponse = true;
+                        } else {
+                            throw new Error("Invalid response format from image API.");
+                        }
+                    } catch (error) {
+                        console.error('Image API call failed, retrying...', error);
+                        retries++;
+                        if (retries < maxRetries) {
+                            await new Promise(res => setTimeout(res, Math.pow(2, retries) * 1000));
+                        } else {
+                            imageResultContainer.innerHTML = `<p class="text-center text-red-500">Gagal membuat gambar. Silakan coba lagi nanti.</p>`;
+                            showMessage('Gagal membuat gambar. Silakan coba lagi nanti.', 'error');
+                        }
+                    }
+                }
+            }
+
+            // Function to play audio from a script
+            async function playAudio(scriptText) {
+                if (currentAudio) {
+                    currentAudio.pause();
+                    currentAudio.currentTime = 0;
+                    currentAudio = null;
+                }
+
+                const payload = {
+                    contents: [{
+                        parts: [{ text: scriptText }]
+                    }],
+                    generationConfig: {
+                        responseModalities: ["AUDIO"],
+                        speechConfig: {
+                            voiceConfig: { prebuiltVoiceConfig: { voiceName: "Kore" } }
+                        }
+                    },
+                    model: "gemini-2.5-flash-preview-tts"
+                };
+
+                try {
+                    const response = await fetch(ttsApiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    
+                    const result = await response.json();
+                    const audioData = result?.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
+                    const mimeType = result?.candidates?.[0]?.content?.parts?.[0]?.inlineData?.mimeType;
+                    
+                    if (audioData && mimeType && mimeType.startsWith("audio/L16")) {
+                        const sampleRateMatch = mimeType.match(/rate=(\d+)/);
+                        const sampleRate = sampleRateMatch ? parseInt(sampleRateMatch[1], 10) : 16000;
+                        const pcmData = base64ToArrayBuffer(audioData);
+                        const pcm16 = new Int16Array(pcmData);
+                        const wavBlob = pcmToWav(pcm16, sampleRate);
+                        const audioUrl = URL.createObjectURL(wavBlob);
+                        
+                        currentAudio = new Audio(audioUrl);
+                        currentAudio.play().catch(e => console.error("Audio playback failed:", e));
+                        showMessage('Memutar audio script...', 'success');
+                    } else {
+                        throw new Error("Invalid audio response format from API.");
+                    }
+                } catch (error) {
+                    console.error('TTS API call failed:', error);
+                    showMessage('Gagal memutar audio. Silakan coba lagi.', 'error');
+                }
+            }
+
+            // Function to download audio from a script
+            async function downloadAudio(scriptText) {
+                const payload = {
+                    contents: [{
+                        parts: [{ text: scriptText }]
+                    }],
+                    generationConfig: {
+                        responseModalities: ["AUDIO"],
+                        speechConfig: {
+                            voiceConfig: { prebuiltVoiceConfig: { voiceName: "Kore" } }
+                        }
+                    },
+                    model: "gemini-2.5-flash-preview-tts"
+                };
+
+                try {
+                    const response = await fetch(ttsApiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    
+                    const result = await response.json();
+                    const audioData = result?.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
+                    const mimeType = result?.candidates?.[0]?.content?.parts?.[0]?.inlineData?.mimeType;
+                    
+                    if (audioData && mimeType && mimeType.startsWith("audio/L16")) {
+                        const sampleRateMatch = mimeType.match(/rate=(\d+)/);
+                        const sampleRate = sampleRateMatch ? parseInt(sampleRateMatch[1], 10) : 16000;
+                        const pcmData = base64ToArrayBuffer(audioData);
+                        const pcm16 = new Int16Array(pcmData);
+                        const wavBlob = pcmToWav(pcm16, sampleRate);
+                        const audioUrl = URL.createObjectURL(wavBlob);
+
+                        const a = document.createElement('a');
+                        a.style.display = 'none';
+                        a.href = audioUrl;
+                        a.download = 'script_audio.wav';
+                        document.body.appendChild(a);
+                        a.click();
+                        URL.revokeObjectURL(audioUrl);
+                        document.body.removeChild(a);
+
+                        showMessage('Audio berhasil diunduh!', 'success');
+                    } else {
+                        throw new Error("Invalid audio response format from API.");
+                    }
+                } catch (error) {
+                    console.error('TTS API call failed for download:', error);
+                    showMessage('Gagal mengunduh audio. Silakan coba lagi.', 'error');
+                }
+            }
+
+            // Render script results
+            function renderResults(scripts) {
+                if (scripts.length === 0) {
+                    resultsContainer.innerHTML = `<div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg text-center text-gray-500 dark:text-gray-400">Tidak ada script yang dihasilkan.</div>`;
+                    return;
+                }
+                
+                scripts.forEach((script, index) => {
+                    const combinedScript = `${script.title}\n\n${script.content}\n\n${script.features.map(f => `• ${f}`).join('\n')}\n\n${ctaList[Math.floor(Math.random() * ctaList.length)]}`;
+
+                    const card = document.createElement('div');
+                    card.className = 'card bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-lg border border-gray-200 dark:border-gray-700 space-y-4';
+                    card.innerHTML = `
+                        <h3 class="text-xl font-bold text-indigo-600 dark:text-indigo-400">Script #${index + 1}</h3>
+                        <p class="mt-1 text-gray-900 dark:text-gray-100 whitespace-pre-wrap">${combinedScript}</p>
+                        <div class="flex flex-col sm:flex-row justify-end mt-4 space-y-2 sm:space-y-0 sm:space-x-2">
+                            <button class="playAudioBtn px-4 py-2 rounded-2xl text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-300" data-script-text="${encodeURIComponent(combinedScript)}">Dengarkan Script 🔊</button>
+                            <button class="downloadAudioBtn px-4 py-2 rounded-2xl text-sm font-semibold text-white bg-purple-600 hover:bg-purple-700 transition-colors duration-300" data-script-text="${encodeURIComponent(combinedScript)}">Unduh Audio 💾</button>
+                            <button class="copyBtn px-4 py-2 rounded-2xl text-sm font-semibold text-white bg-green-600 hover:bg-green-700 transition-colors duration-300" data-index="${index}">Salin Script</button>
+                        </div>
+                    `;
+                    resultsContainer.appendChild(card);
+                });
+
+                // Attach copy functionality to new buttons
+                document.querySelectorAll('.copyBtn').forEach(button => {
+                    button.addEventListener('click', (event) => {
+                        const index = event.target.dataset.index;
+                        const scriptContent = scripts[index];
+                        const textToCopy = `${scriptContent.title}\n\n${scriptContent.content}\n\n${scriptContent.features.map(f => `• ${f}`).join('\n')}\n\n${ctaList[Math.floor(Math.random() * ctaList.length)]}`;
+                        copyToClipboard(textToCopy);
+                    });
+                });
+
+                // Attach audio playback functionality
+                document.querySelectorAll('.playAudioBtn').forEach(button => {
+                    button.addEventListener('click', (event) => {
+                        console.log("Playing audio...");
+                        // Correctly access the dataset property
+                        const scriptText = decodeURIComponent(event.target.dataset.scriptText);
+                        playAudio(scriptText);
+                    });
+                });
+
+                // Attach audio download functionality
+                document.querySelectorAll('.downloadAudioBtn').forEach(button => {
+                    button.addEventListener('click', (event) => {
+                        console.log("Downloading audio...");
+                        // Correctly access the dataset property
+                        const scriptText = decodeURIComponent(event.target.dataset.scriptText);
+                        downloadAudio(scriptText);
+                    });
+                });
+            }
+
+            // Copy to clipboard function
+            function copyToClipboard(text) {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                try {
+                    document.execCommand('copy');
+                    showMessage('Script berhasil disalin!', 'success');
+                } catch (err) {
+                    console.error('Failed to copy text', err);
+                    showMessage('Gagal menyalin script.', 'error');
+                }
+                document.body.removeChild(textarea);
+            }
+
+            // Reset function
+            resetBtn.addEventListener('click', () => {
+                productNameInput.value = '';
+                productLinkInput.value = '';
+                imagePromptInput.value = '';
+                resultsContainer.innerHTML = '';
+                imageResultContainer.innerHTML = 'Gambar akan muncul di sini...';
+            });
+
+            // Attach generate function to button clicks
+            generateBtn.addEventListener('click', generateScript);
+            generateImageBtn.addEventListener('click', generateImage);
+        });
+    </script>
+</body>
+</html>
